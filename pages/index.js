@@ -1,8 +1,20 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import moment from "moment";
+import "moment/locale/es"; // without this line it didn't work
+import Logo from "../public/images/logo-carrefour.png";
 
 export default function Home() {
+  /*   $(document).ready(function () {
+    var weeknumber = moment("11-26-2016", "MMDDYYYY").isoWeek();
+    alert(weeknumber);
+  }); */
+  moment.locale("fr");
+  let now = moment().format();
+  var weekNumber = moment(now, "DD-MM-YYYY").isoWeek();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,58 +24,25 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
+        <h1 className={styles.title}>Carrefour Saint-pol-sur-mer</h1>
+        <Image src={Logo} />
+        <h3>Nous sommes la semaine {`${weekNumber}`}</h3>
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <Link href="/epicerie/epicerie" className={styles.card}>
+            <a>
+              <h2>Epicerie &rarr;</h2>
+            </a>
+          </Link>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Link href="/liquide" className={styles.card}>
+            <a>
+              <h2>Liquide &rarr;</h2>
+            </a>
+          </Link>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <footer className={styles.footer}>dev by Lionel Ignaes</footer>
     </div>
-  )
+  );
 }
