@@ -94,18 +94,16 @@ export default function Epicerie({ data }) {
         {data.map((semaine) => {
           return (
             <div className={styles.card} key={semaine.semaine}>
-              <p>
-                {`horraire de la semaine ${semaine.semaine}`}
-                <br />
-                <Link href={`/epicerie/${semaine.semaine}`}>
-                  <Image
-                    width={250}
-                    height={150}
-                    src={`${semaine.url}`}
-                    alt="horraire"
-                  ></Image>
-                </Link>
-              </p>
+              <p>{`horraire semaine ${semaine.semaine}`} </p>
+              <br />
+              <Link href={`/epicerie/${semaine.semaine}`}>
+                <Image
+                  width={250}
+                  height={150}
+                  src={`${semaine.url}`}
+                  alt="horraire"
+                ></Image>
+              </Link>
             </div>
           );
         })}

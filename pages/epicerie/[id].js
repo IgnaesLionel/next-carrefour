@@ -5,6 +5,7 @@ import Image from "next/image";
 export default function DetailPage({ res }) {
   const router = useRouter();
   const semaineId = router.query.id;
+  /*   const logo = require('./logo.jpeg); */
 
   /*   useEffect(() => {
     const fetchData = async () => {
@@ -22,14 +23,15 @@ export default function DetailPage({ res }) {
 
   return (
     <div>
-      <h1>Detail</h1>
-      <h2>semaine {res.semaine} </h2>
+      <h1>Horraire de la semaine {res.semaine} </h1>
       <Image
-        quality={30}
-        width={250}
-        height={150}
+        quality={40}
+        width={1000}
+        height={800}
         src={`${res.url}`}
         alt="horraire"
+        placeholder="blur"
+        blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
       ></Image>
     </div>
   );
