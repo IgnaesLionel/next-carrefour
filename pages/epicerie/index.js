@@ -209,7 +209,6 @@ export async function getStaticProps() {
     r.json()
   ); //  stream object  ----> body headers __proto__
 
-  console.log(data);
   return {
     props: {
       data: data,
