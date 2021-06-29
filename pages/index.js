@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import moment from "moment";
-import "moment/locale/es"; // without this line it didn't work
+import "moment/locale/fr";
 import Logo from "../public/images/logo-carrefour.png";
 
 export default function Home() {
@@ -13,7 +13,9 @@ export default function Home() {
   }); */
   moment.locale("fr");
   let now = moment().format();
-  var weekNumber = moment(now, "DD-MM-YYYY").isoWeek();
+  let weekNumber = moment(now, "DD-MM-YYYY").week();
+  weekNumber += 1;
+  let dayName = moment().format("LL");
 
   return (
     <div className={styles.container}>
@@ -25,21 +27,23 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Carrefour Saint-pol-sur-mer</h1>
-        <Image src={Logo} />
-        <h3>Nous sommes la semaine {`${weekNumber}`}</h3>
-        <div className={styles.grid}>
-          <Link href="/epicerie/epicerie" className={styles.card}>
-            <a>
-              <h2>Epicerie &rarr;</h2>
-            </a>
-          </Link>
 
-          <Link href="/liquide" className={styles.card}>
-            <a>
-              <h2>Liquide &rarr;</h2>
-            </a>
-          </Link>
-        </div>
+        <Image src={Logo} />
+        <br />
+        <h3>Nous sommes le {dayName}</h3>
+        <h3>Semaine : {weekNumber}</h3>
+
+        <Link href="/epicerie/">
+          <a className={styles.box}>
+            <h2>Epicerie &rarr;</h2>
+          </a>
+        </Link>
+
+        <Link href="/liquide">
+          <a className={styles.box}>
+            <h2>Liquide &rarr;</h2>
+          </a>
+        </Link>
       </main>
 
       <footer className={styles.footer}>dev by Lionel Ignaes</footer>
