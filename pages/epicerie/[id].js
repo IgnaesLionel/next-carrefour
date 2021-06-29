@@ -114,10 +114,8 @@ export async function getStaticProps(context) {
     props: {
       res,
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10, // In seconds
+
+    revalidate: 60,
   };
 }
 
@@ -125,13 +123,10 @@ export async function getStaticPaths() {
   const data = await fetch("http://35.169.149.148:1337/epiceries/").then((r) =>
     r.json()
   );
-  // Get the paths we want to pre-render based on posts
+
   const paths = data.map((page) => ({
     params: { id: page.id.toString() },
   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: blocking } will server-render pages
-  // on-demand if the path doesn't exist.
   return { paths, fallback: "blocking" };
 }
