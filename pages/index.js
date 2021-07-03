@@ -5,17 +5,13 @@ import Link from "next/link";
 import moment from "moment";
 import "moment/locale/fr";
 import Logo from "../public/images/logo-carrefour.png";
+import getFrenchWeekNumber from "../utils/weekNumber.js";
 
 export default function Home() {
-  /*   $(document).ready(function () {
-    var weeknumber = moment("11-26-2016", "MMDDYYYY").isoWeek();
-    alert(weeknumber);
-  }); */
   moment.locale("fr");
-  let now = moment().format();
-  let weekNumber = moment(now, "DD-MM-YYYY").week();
-  weekNumber += 1;
+
   let dayName = moment().format("LL");
+  let weekNumber = getFrenchWeekNumber();
 
   return (
     <div className={styles.container}>

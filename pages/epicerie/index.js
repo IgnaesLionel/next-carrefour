@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect } from "react";
+import getFrenchWeekNumber from "../../utils/weekNumber.js";
 
 import moment from "moment";
 import "moment/locale/fr";
@@ -12,6 +13,7 @@ import "moment/locale/fr";
 export default function Epicerie({ data }) {
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+  const weekNumber = getFrenchWeekNumber();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,11 +77,6 @@ export default function Epicerie({ data }) {
       .then((response) => response.json())
       .then((json) => console.log(json));
   };
-
-  moment.locale("fr");
-  let now = moment().format();
-  let weekNumber = moment(now, "DD-MM-YYYY").isoWeek();
-  weekNumber += 1;
 
   const style1 = {
     border: "2px solid rgba(0, 0, 0, 0.05)",
